@@ -1,0 +1,296 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "project-one": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/project-one",
+      "sourceRoot": "projects/project-one/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/project-one",
+            "index": "projects/project-one/src/index.html",
+            "main": "projects/project-one/src/main.ts",
+            "polyfills": "projects/project-one/src/polyfills.ts",
+            "tsConfig": "projects/project-one/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/project-one/src/favicon.ico",
+              "projects/project-one/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/project-one/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/project-one/src/environments/environment.ts",
+                  "with": "projects/project-one/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "project-one:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "project-one:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "project-one:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/project-one/src/test.ts",
+            "polyfills": "projects/project-one/src/polyfills.ts",
+            "tsConfig": "projects/project-one/tsconfig.spec.json",
+            "karmaConfig": "projects/project-one/karma.conf.js",
+            "assets": [
+              "projects/project-one/src/favicon.ico",
+              "projects/project-one/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/project-one/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/project-one/**/*.ts",
+              "projects/project-one/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/project-one/e2e/protractor.conf.js",
+            "devServerTarget": "project-one:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "project-one:serve:production"
+            }
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/ng-multi-project-prototype/"
+          }
+        }
+      }
+    },
+    "project-two": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/project-two",
+      "sourceRoot": "projects/project-two/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/project-two",
+            "index": "projects/project-two/src/index.html",
+            "main": "projects/project-two/src/main.ts",
+            "polyfills": "projects/project-two/src/polyfills.ts",
+            "tsConfig": "projects/project-two/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/project-two/src/favicon.ico",
+              "projects/project-two/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/project-two/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/project-two/src/environments/environment.ts",
+                  "with": "projects/project-two/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "project-two:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "project-two:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "project-two:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/project-two/src/test.ts",
+            "polyfills": "projects/project-two/src/polyfills.ts",
+            "tsConfig": "projects/project-two/tsconfig.spec.json",
+            "karmaConfig": "projects/project-two/karma.conf.js",
+            "assets": [
+              "projects/project-two/src/favicon.ico",
+              "projects/project-two/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "projects/project-two/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/project-two/**/*.ts",
+              "projects/project-two/**/*.html"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/project-two/e2e/protractor.conf.js",
+            "devServerTarget": "project-two:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "project-two:serve:production"
+            }
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/ng-multi-project-prototype/"
+          }
+        }
+      }
+    },
+    "common": {
+      "projectType": "library",
+      "root": "projects/common",
+      "sourceRoot": "projects/common/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/common/tsconfig.lib.json",
+            "project": "projects/common/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/common/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/common/src/test.ts",
+            "tsConfig": "projects/common/tsconfig.spec.json",
+            "karmaConfig": "projects/common/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/common/**/*.ts",
+              "projects/common/**/*.html"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  },
+  "defaultProject": "project-one"
+}
